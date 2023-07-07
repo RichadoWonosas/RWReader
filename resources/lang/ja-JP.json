@@ -1,0 +1,84 @@
+{
+    "text": [
+        {
+            "id": "title",
+            "position": "innerText",
+            "value": "RW式リーダー"
+        },
+        {
+            "id": "text_noscript",
+            "position": "innerText",
+            "value": "ご注意：JavaScriptを起用してください。"
+        },
+        {
+            "id": "text_setting",
+            "position": "innerText",
+            "value": "設定"
+        },
+        {
+            "id": "text_setting_lang",
+            "position": "innerText",
+            "value": "ＵＩ言語"
+        },
+        {
+            "id": "text_setting_size",
+            "position": "innerText",
+            "value": "フォントサイズ"
+        },
+        {
+            "id": "text_setting_light",
+            "position": "innerText",
+            "value": "テーマ切替"
+        },
+        {
+            "id": "text_menu",
+            "position": "innerText",
+            "value": "メニュー"
+        },
+        {
+            "id": "text_small",
+            "position": "innerText",
+            "value": "小"
+        },
+        {
+            "id": "text_medium",
+            "position": "innerText",
+            "value": "中"
+        },
+        {
+            "id": "text_large",
+            "position": "innerText",
+            "value": "大"
+        },
+        {
+            "id": "title_content",
+            "position": "innerText",
+            "value": "文章選択"
+        },
+        {
+            "id": "filter_box",
+            "position": "placeholder",
+            "value": "キーワードで絞り込む…"
+        },
+        {
+            "id": "text_warp",
+            "position": "innerText",
+            "value": "ジャンプ"
+        },
+        {
+            "id": "text_warp_contents",
+            "position": "innerText",
+            "value": "文章選択"
+        },
+        {
+            "id": "text_warp_brief",
+            "position": "innerText",
+            "value": "文章概要"
+        },
+        {
+            "id": "text_warp_main",
+            "position": "innerText",
+            "value": "文章本編"
+        }
+    ]
+}

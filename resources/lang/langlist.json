@@ -1,0 +1,20 @@
+{
+    "languages": [
+        {
+            "id": "zh-CN",
+            "name": "中文（简体）"
+        },
+        {
+            "id": "zh-TW",
+            "name": "中文（繁體）"
+        },
+        {
+            "id": "en-US",
+            "name": "English"
+        },
+        {
+            "id": "ja-JP",
+            "name": "日本語"
+        }
+    ]
+}

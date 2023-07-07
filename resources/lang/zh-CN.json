@@ -1,0 +1,84 @@
+{
+    "text": [
+        {
+            "id": "title",
+            "position": "innerText",
+            "value": "RW式阅读器"
+        },
+        {
+            "id": "text_noscript",
+            "position": "innerText",
+            "value": "注意：请启用JavaScript或更换能够使用JavaScript的浏览器。"
+        },
+        {
+            "id": "text_setting",
+            "position": "innerText",
+            "value": "设置"
+        },
+        {
+            "id": "text_setting_lang",
+            "position": "innerText",
+            "value": "界面语言"
+        },
+        {
+            "id": "text_setting_size",
+            "position": "innerText",
+            "value": "字体大小"
+        },
+        {
+            "id": "text_setting_light",
+            "position": "innerText",
+            "value": "主题切换"
+        },
+        {
+            "id": "text_menu",
+            "position": "innerText",
+            "value": "菜单"
+        },
+        {
+            "id": "text_small",
+            "position": "innerText",
+            "value": "小"
+        },
+        {
+            "id": "text_medium",
+            "position": "innerText",
+            "value": "中"
+        },
+        {
+            "id": "text_large",
+            "position": "innerText",
+            "value": "大"
+        },
+        {
+            "id": "title_content",
+            "position": "innerText",
+            "value": "文章选择"
+        },
+        {
+            "id": "filter_box",
+            "position": "placeholder",
+            "value": "输入关键词以筛选……"
+        },
+        {
+            "id": "text_warp",
+            "position": "innerText",
+            "value": "跳转"
+        },
+        {
+            "id": "text_warp_contents",
+            "position": "innerText",
+            "value": "文章选择"
+        },
+        {
+            "id": "text_warp_brief",
+            "position": "innerText",
+            "value": "文章简介"
+        },
+        {
+            "id": "text_warp_main",
+            "position": "innerText",
+            "value": "文章正文"
+        }
+    ]
+}

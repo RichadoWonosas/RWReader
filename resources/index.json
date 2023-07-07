@@ -1,0 +1,18 @@
+{
+    "articles": [
+        {
+            "id": "-1",
+            "name": "初始页面：帮助与说明",
+            "tag": "初始页面 帮助 说明 help",
+            "article": "resources/articles/init.md",
+            "brief": "resources/briefs/init.md"
+        },
+        {
+            "id": "blhe01",
+            "name": "Bloody Heaven || 01: Bloody Heaven?",
+            "tag": "blhe01 BlHe01 Bloody Heaven 01",
+            "article": "resources/articles/blhe/01.md",
+            "brief": "resources/briefs/blhe/01.md"
+        }
+    ]
+}

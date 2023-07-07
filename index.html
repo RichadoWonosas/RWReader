@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="title">RW式阅读器</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/active-styles.css" />
+    <link rel="icon" href="css/Riomon.svg" />
+</head>
+
+<body>
+    <!-- Fixed part -->
+    <!-- <p id="header">
+        <span id="head_text">欢迎使用...</span>
+    </p> -->
+    <p id="footer">
+        <span id="foot_text">RichadoWonosas 2023</span>
+        <noscript id="text_noscript">注意：请启用JavaScript或者更换能够使用JavaScript的浏览器。</noscript>
+    </p>
+    <div id="div_bg" class="no_padding no_shadow"></div>
+
+    <!-- Drawer -->
+    <div id="drawer">
+
+        <div id="root_container">
+            <!-- Warp section -->
+            <div id="root_warp" class="drawer_root collapse">
+
+                <div id="opt_warp" class="drawer_container flex">
+                    <h3 id="text_warp">跳转</h3>
+                    <span class="icon_expand"></span>
+                </div>
+
+                <div class="drawer_container">
+
+                    <div id="warp_container" class="drawer_container collapse">
+
+                        <a href="#root_page">
+                            <div id="warp_contents" class="drawer_content">
+                                <span id="text_warp_contents" class="opt_text">
+                                    筛选目录
+                                </span>
+                                <span class="icon_goto"></span>
+                            </div>
+                        </a>
+
+                        <a href="#art_brief">
+                            <div id="warp_brief" class="drawer_content">
+                                <span id="text_warp_brief" class="opt_text">
+                                    文章简介
+                                </span>
+                                <span class="icon_goto"></span>
+                            </div>
+                        </a>
+
+                        <a href="#art_main">
+                            <div id="warp_main" class="drawer_content">
+                                <span id="text_warp_main" class="opt_text">
+                                    文章正文
+                                </span>
+                                <span class="icon_goto"></span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- Settings section -->
+            <div id="root_settings" class="drawer_root collapse">
+
+                <div id="opt_settings" class="drawer_container flex">
+                    <h3 id="text_setting">设置</h3>
+                    <span class="icon_expand"></span>
+                </div>
+
+                <div class="drawer_container">
+
+                    <div id="settings_container" class="drawer_container collapse">
+
+                        <div id="setting_lang" class="drawer_content">
+                            <span id="text_setting_lang" class="opt_text">
+                                界面语言
+                            </span>
+                            <select id="select_language">
+                            </select>
+                        </div>
+
+                        <div id="setting_size" class="drawer_content">
+                            <span id="text_setting_size" class="opt_text">
+                                字体大小
+                            </span>
+                            <select id="select_size">
+                                <option id="text_small" value="small">小</option>
+                                <option id="text_medium" value="medium" selected>中</option>
+                                <option id="text_large" value="large">大</option>
+                            </select>
+                        </div>
+
+                        <div id="setting_light" class="drawer_content">
+                            <span id="text_setting_light" class="opt_text">
+                                主题切换
+                            </span>
+                            <label class="toggle">
+                                <input id="daynight" type="checkbox">
+                                <span id="dn_span" class="slider">
+                                    <span class="inner_slider"></span>
+                                </span>
+                                </input>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="drawer_button" class="no_padding">
+            <svg class="menu_icon" viewbox="0 0 96 96" fill="#cccccc">
+                <rect class="top" width="52" height="4" x="22" y="30" rx="2"></rect>
+                <rect class="mid" width="52" height="4" x="22" y="46" rx="2"></rect>
+                <rect class="low" width="52" height="4" x="22" y="62" rx="2"></rect>
+            </svg>
+            <span id="text_menu" class="db_text">菜单</span>
+        </div>
+    </div>
+    <div id="drawer_mask"></div>
+
+    <!-- Main page -->
+    <!-- <div id="header_pad" class="pad no_padding no_shadow"></div> -->
+
+    <div id="root_div">
+        <div class="line_container">
+            <article id="root_page">
+                <h1 id="title_content">文章选择</h1>
+                <input id="filter_box" type="search" placeholder="输入关键词以筛选……"></input>
+                <div id="root_arts" class="no_shadow">
+                </div>
+            </article>
+            <article id="art_brief"></article>
+        </div>
+        <article id="art_main"></article>
+    </div>
+
+    <div id="footer_pad" class="pad no_padding no_shadow"></div>
+
+    <script src="scripts/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+
+</html>
