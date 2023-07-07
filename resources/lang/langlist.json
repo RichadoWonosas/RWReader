@@ -9,6 +9,10 @@
             "name": "中文（繁體）"
         },
         {
+            "id": "lzh-CN",
+            "name": "文言（華夏）"
+        },
+        {
             "id": "en-US",
             "name": "English"
         },

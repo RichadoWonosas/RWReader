@@ -53,7 +53,7 @@
         {
             "id": "title_content",
             "position": "innerText",
-            "value": "文章选择"
+            "value": "目录"
         },
         {
             "id": "filter_box",
@@ -68,17 +68,17 @@
         {
             "id": "text_warp_contents",
             "position": "innerText",
-            "value": "文章选择"
+            "value": "目录"
         },
         {
             "id": "text_warp_brief",
             "position": "innerText",
-            "value": "文章简介"
+            "value": "简介"
         },
         {
             "id": "text_warp_main",
             "position": "innerText",
-            "value": "文章正文"
+            "value": "正文"
         }
     ]
 }

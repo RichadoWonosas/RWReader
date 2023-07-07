@@ -53,7 +53,7 @@
         {
             "id": "title_content",
             "position": "innerText",
-            "value": "Article Selection"
+            "value": "Contents"
         },
         {
             "id": "filter_box",
@@ -68,17 +68,17 @@
         {
             "id": "text_warp_contents",
             "position": "innerText",
-            "value": "Article Selection"
+            "value": "Contents"
         },
         {
             "id": "text_warp_brief",
             "position": "innerText",
-            "value": "Article Brief"
+            "value": "Brief"
         },
         {
             "id": "text_warp_main",
             "position": "innerText",
-            "value": "Main Article"
+            "value": "Article"
         }
     ]
 }

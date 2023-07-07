@@ -53,7 +53,7 @@
         {
             "id": "title_content",
             "position": "innerText",
-            "value": "文章選択"
+            "value": "目次"
         },
         {
             "id": "filter_box",
@@ -68,17 +68,17 @@
         {
             "id": "text_warp_contents",
             "position": "innerText",
-            "value": "文章選択"
+            "value": "目次"
         },
         {
             "id": "text_warp_brief",
             "position": "innerText",
-            "value": "文章概要"
+            "value": "概要"
         },
         {
             "id": "text_warp_main",
             "position": "innerText",
-            "value": "文章本編"
+            "value": "本編"
         }
     ]
 }

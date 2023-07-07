@@ -3,37 +3,37 @@
         {
             "id": "title",
             "position": "innerText",
-            "value": "RW式閱讀器"
+            "value": "南理茶渡製幻本"
         },
         {
             "id": "text_noscript",
             "position": "innerText",
-            "value": "注意：請啟用JavaScript或更換能夠使用JavaScript的瀏覽器。"
+            "value": "告：請啟爪哇手稿或易可閱爪哇手稿之覽器。"
         },
         {
             "id": "text_setting",
             "position": "innerText",
-            "value": "設置"
+            "value": "設"
         },
         {
             "id": "text_setting_lang",
             "position": "innerText",
-            "value": "界面語言"
+            "value": "言"
         },
         {
             "id": "text_setting_size",
             "position": "innerText",
-            "value": "字體大小"
+            "value": "字號"
         },
         {
             "id": "text_setting_light",
             "position": "innerText",
-            "value": "主題切換"
+            "value": "易景"
         },
         {
             "id": "text_menu",
             "position": "innerText",
-            "value": "選單"
+            "value": "囊"
         },
         {
             "id": "text_small",
@@ -53,32 +53,32 @@
         {
             "id": "title_content",
             "position": "innerText",
-            "value": "目錄"
+            "value": "擇文處"
         },
         {
             "id": "filter_box",
             "position": "placeholder",
-            "value": "鍵入關鍵詞以篩選……"
+            "value": "置要詞以篩……"
         },
         {
             "id": "text_warp",
             "position": "innerText",
-            "value": "跳轉"
+            "value": "傳"
         },
         {
             "id": "text_warp_contents",
             "position": "innerText",
-            "value": "目錄"
+            "value": "錄"
         },
         {
             "id": "text_warp_brief",
             "position": "innerText",
-            "value": "簡介"
+            "value": "序"
         },
         {
             "id": "text_warp_main",
             "position": "innerText",
-            "value": "正文"
+            "value": "文"
         }
     ]
 }
