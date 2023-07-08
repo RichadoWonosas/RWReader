@@ -843,13 +843,14 @@ div.line_container {
 
 #root_div article * {
     font-size: var(--font-size);
+    word-wrap: break-word;
 }
 
 #root_div article p,
 h1,
 h2,
 h3 {
-    padding: 0 var(--font-size);
+    padding: 0 0 0 var(--font-size);
 }
 
 #root_div article ruby rt {
@@ -945,7 +946,7 @@ h3 {
 }
 
 .night #footer,
-#header {
+.night #header {
     background-color: #663399;
     color: #cccccc;
 }

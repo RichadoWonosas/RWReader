@@ -137,26 +137,113 @@ function getJsonData(path) {
     return prom;
 }
 
-function setupRubyElement(raw_html) {
-    let match = ruby_exp.exec(raw_html);
-    while (match !== null) {
-        raw_html =
-            raw_html.substring(0, match.index) +
-            match[0]
-                .replace("{", "<ruby>")
-                .replace("}", "</ruby>")
-                .replaceAll("[", "<rt>")
-                .replaceAll("]", "</rt>") +
-            raw_html.substring(match.index + match[0].length);
+function setupRubyElement(text) {
+    let result = '', reg = ['', ''];
+    let status = 0;
 
-        match = ruby_exp.exec(raw_html);
+    if (typeof text !== 'string')
+        return result;
+    if (text.length === 0)
+        return result;
+
+    // run state machine
+    for (let i = 0; i < text.length; i++) {
+        switch (status) {
+            default:
+            case 0:
+                if (text[i] !== '{') {
+                    result += text[i];
+                } else {
+                    status = 1;
+                }
+                continue;
+            case 1:
+                switch (text[i]) {
+                    case '{':
+                        result += `{${reg[0]}`;
+                        continue;
+                    case '}':
+                    case ']':
+                        result += `{${reg[0]}${text[i]}`;
+                        status = 0;
+                        reg[0] = "";
+                        continue;
+                    case '[':
+                        status = 2;
+                        continue;
+                    default:
+                        reg[0] += text[i];
+                        continue;
+                }
+            case 2:
+                switch (text[i]) {
+                    case ']':
+                        status = 3;
+                        continue;
+                    case '{':
+                        result += `{${reg[0]}[${reg[1]}`;
+                        status = 1;
+                        reg[0] = "";
+                        reg[1] = "";
+                        continue;
+                    case '}':
+                    case '[':
+                        result += `{${reg[0]}[${reg[1]}${text[i]}`;
+                        status = 0;
+                        reg[0] = "";
+                        reg[1] = "";
+                        continue;
+                    default:
+                        reg[1] += text[i];
+                        continue;
+                }
+            case 3:
+                switch (text[i]) {
+                    case '}':
+                        result += `<ruby>${reg[0]}<rt>${reg[1]}</rt></ruby>`;
+                        status = 0;
+                        reg[0] = "";
+                        reg[1] = "";
+                        continue;
+                    case '{':
+                        result += `{${reg[0]}[${reg[1]}]`;
+                        status = 1;
+                        reg[0] = "";
+                        reg[1] = "";
+                        continue;
+                    default:
+                        result += `{${reg[0]}[${reg[1]}]${text[i]}`;
+                        status = 0;
+                        reg[0] = "";
+                        reg[1] = "";
+                    case ' ':
+                        continue;
+                }
+        }
     }
 
-    return raw_html;
+    // append unused contents
+    switch (status) {
+        default:
+        case 0:
+            break;
+        case 1:
+            result += `{${reg[0]}`;
+            break;
+        case 2:
+            result += `{${reg[0]}[${reg[1]}`;
+            break;
+        case 3:
+            result += `{${reg[0]}[${reg[1]}]`;
+            break;
+    }
+
+    return result;
 }
 
-function setupMarkdownData(path, container) {
-    fetch(path).then(
+function fetchMarkdownData(path) {
+    let prom = fetch(path);
+    prom = prom.then(
         response =>
             response.status === 200 ?
                 response.text() :
@@ -168,7 +255,16 @@ function setupMarkdownData(path, container) {
                 marked.parse(content)
     ).then(
         raw_html => setupRubyElement(raw_html)
-    ).then(
+    ).catch(
+        err => alert(err)
+    );
+
+    return prom;
+}
+
+function setupMarkdownData(path, container) {
+    let prom = fetchMarkdownData(path);
+    prom.then(
         raw_html => {
             container.innerHTML = raw_html;
         }
@@ -221,7 +317,11 @@ function updateLanguage() {
     prom.then(
         (data) => {
             for (let i = 0; i < data.text.length; i++) {
-                document.getElementById(data.text[i].id)[data.text[i].position] = data.text[i].value;
+                if (data.text[i].position !== "var") {
+                    document.getElementById(data.text[i].id)[data.text[i].position] = data.text[i].value;
+                } else {
+                    var_lang[data.text[i].position] = data.text[i].value;
+                }
             }
         }
     ).catch(
@@ -251,6 +351,44 @@ function checkPages() {
     setCookie("cur", selected_id);
     setCookie("search", search_content);
 }
+
+function countWord(text) {
+    // get pure content
+    vacantDiv.innerHTML = text;
+    let t = vacantDiv.textContent;
+    // count
+    let result = 0;
+    if (t === null) {
+        return result;
+    }
+    let words = t.replaceAll('\n', ' ').split(/\b|\s+/).filter(s => ((s !== ' ') && (s !== '')));
+    words.forEach(
+        word => {
+            let w = word.replaceAll(' ', '');
+            if (/[0-9a-zA-Z]/.test(w[0])) {
+                result += 1;
+            } else {
+                result += w.length;
+            }
+        }
+    )
+    return result;
+}
+
+function countArticleWords() {
+    for (let i = 0; i < content_arts.articles.length; i++) {
+        let prom = fetchMarkdownData(content_arts.articles[i].article);
+        prom.then(
+            raw_html => {
+                content_arts.articles[i].words = countWord(raw_html);
+            }
+        ).catch(
+            err => alert(err)
+        )
+    }
+}
+
+function renderWordCountZHCN(count) { }
 
 function updatePage(id) {
     // setup cookie
@@ -342,7 +480,7 @@ function initArticles() {
             content_arts.articles = content_arts.articles.sort(
                 (a1, a2) => a1.id.localeCompare(a2.id)
             );
-            console.log(content_arts);
+            countArticleWords();
             checkPages();
             initButtons();
             updatePage(selected_id);
@@ -407,6 +545,8 @@ const opt_settings = document.getElementById("opt_settings");
 const root_settings = document.getElementById("root_settings");
 const settings_container = document.getElementById("settings_container");
 
+const vacantDiv = document.createElement("div");
+
 const active_sheet = document.styleSheets[1];
 
 button_drawer.onclick = () => changeDrawerStatus(!drawer_expand);
@@ -442,8 +582,9 @@ var arts_showing = [];
 var warp_expanded = false;
 var settings_expanded = false;
 
-const ruby_exp = /\{(([^\{\[\]\}]|\s)+\[([^\{\[\]\}]|\s)+\])+\}/;
+const ruby_exp = /\{([^\{\[\]\}]|\s)+\[([^\{\[\]\}]|\s)+\]\}/;
 const languages = {};
+const var_lang = {};
 const button_arts = [];
 const content_arts = {};
 
