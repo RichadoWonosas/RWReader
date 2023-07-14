@@ -13,6 +13,20 @@
             "tag": "blhe01 BlHe01 Bloody Heaven 01",
             "article": "resources/articles/blhe/01.md",
             "brief": "resources/briefs/blhe/01.md"
+        },
+        {
+            "id": "tbo-rio-01",
+            "name": "致世界：桔梗的魔女与实虚之境 || 01 潜入，以及虚实之虚",
+            "tag": "tborio01 tbo-rio-01 tbo rio 01",
+            "article": "resources/articles/tbo-rio/01.md",
+            "brief": "resources/briefs/tbo-rio/01.md"
+        },
+        {
+            "id": "tbo-rio-02",
+            "name": "致世界：桔梗的魔女与实虚之境 || 02 轮回，其为死生之生",
+            "tag": "tborio02 tbo-rio-02 tbo rio 02",
+            "article": "resources/articles/tbo-rio/02.md",
+            "brief": "resources/briefs/tbo-rio/02.md"
         }
     ]
 }
