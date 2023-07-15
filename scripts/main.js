@@ -517,6 +517,7 @@ function updateDrawerCond() {
 }
 
 function initialise() {
+    marked.setOptions({ mangle: false, headerIds: false });
     initialiseLanguage();
     checkNightMode();
     checkFontSize();
