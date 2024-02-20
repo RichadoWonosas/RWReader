@@ -1,22 +1,73 @@
 @charset "UTF-8";
 
 body {
-    background-color: #eeeeee;
+    background-color: var(--page-bgcolor);
 
 }
 
 * {
-    color: #333333;
+    color: var(--page-content-color);
     transition: all ease 0.333s;
     scroll-behavior: smooth;
 }
 
-body.night * {
-    color: #cccccc;
+* {
+    --scrollbar-bgcolor: #ddaaffcc;
+    --page-bgcolor: #eeeeee;
+    --page-content-color: #333333;
+    --drawer-bgcolor: #cc99ff;
+    --db-bgcolor: #ddbbff;
+    --db-hover-bgcolor: #ddaaff;
+    --db-active-bgcolor: #bb88ee;
+    --db-text-color: #ffffff;
+    --div-bgcolor: #ffffff99;
+    --button-selected-bgcolor: #cc99ff99;
+    --filter-button-bgcolor: #33006666;
+    --art-bgcolor: #ffffffcc;
+    --art-h1-bdcolor: #666666;
+    --fh-bgcolor: #cc99ff;
+    --fh-color: #ffffff;
+    --select-bgcolor: #ffffff;
+    --select-bdcolor: #cccccc;
+    --opt-checked-bgcolor: #ddbbff;
+    --icon-light: url('icons/light_l.svg');
+    --icon-lang: url('icons/lang_l.svg');
+    --icon-size: url('icons/size_l.svg');
+    --icon-content: url('icons/content_l.svg');
+    --icon-brief: url('icons/brief_l.svg');
+    --icon-art: url('icons/article_l.svg');
+    --icon-expand: url('icons/expand_l.svg');
+    --icon-goto: url('icons/goto_l.svg');
 }
 
-body.night {
-    background-color: #111111;
+.night,
+.night * {
+    --scrollbar-bgcolor: #110022cc;
+    --page-bgcolor: #111111;
+    --page-content-color: #cccccc;
+    --drawer-bgcolor: #330066;
+    --db-bgcolor: #7744aa;
+    --db-hover-bgcolor: #663399;
+    --db-active-bgcolor: #552288;
+    --db-text-color: #ccbbdd;
+    --div-bgcolor: #ffffff22;
+    --button-selected-bgcolor: #66339999;
+    --filter-button-bgcolor: #ffffff66;
+    --art-bgcolor: #000000cc;
+    --art-h1-bdcolor: #cccccc;
+    --fh-bgcolor: #663399;
+    --fh-color: #cccccc;
+    --select-bgcolor: #330066;
+    --select-bdcolor: #330066;
+    --opt-checked-bgcolor: #663399;
+    --icon-light: url('icons/light_n.svg');
+    --icon-lang: url('icons/lang_n.svg');
+    --icon-size: url('icons/size_n.svg');
+    --icon-content: url('icons/content_n.svg');
+    --icon-brief: url('icons/brief_n.svg');
+    --icon-art: url('icons/article_n.svg');
+    --icon-expand: url('icons/expand_n.svg');
+    --icon-goto: url('icons/goto_n.svg');
 }
 
 *::-webkit-scrollbar {
@@ -24,16 +75,8 @@ body.night {
 }
 
 *::-webkit-scrollbar-track {
-    background-color: #ddaaffcc;
+    background-color: var(--scrollbar-bgcolor);
     border-radius: 2pt;
-}
-
-.night *::-webkit-scrollbar-track {
-    background-color: #110022cc;
-}
-
-.night::-webkit-scrollbar-track {
-    background-color: #110022cc;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -84,12 +127,8 @@ button {
     top: 0pt;
     padding: 72pt 0pt 12pt 12pt;
     margin: 0pt;
-    background-color: #cc99ff;
+    background-color: var(--drawer-bgcolor);
     z-index: 104;
-}
-
-.night #drawer {
-    background-color: #330066;
 }
 
 #drawer.collapse {
@@ -110,7 +149,7 @@ button {
     top: 12pt;
     margin: 0pt;
     padding: 0pt;
-    background-color: #ddbbff;
+    background-color: var(--db-bgcolor);
     box-shadow: 0pt 2pt 5pt #66339966;
     overflow: hidden;
 
@@ -129,11 +168,7 @@ button {
     font-weight: 700;
     user-select: none;
     word-break: break-all;
-    color: #ffffff;
-}
-
-.night #drawer_button .db_text {
-    color: #ccbbdd;
+    color: var(--db-text-color);
 }
 
 #drawer_button.collapse .db_text {
@@ -144,10 +179,6 @@ button {
 #drawer_button.expand .db_text {
     width: calc(min(240pt, 100%) - 2 * 48pt);
     letter-spacing: 8pt;
-}
-
-.night #drawer_button {
-    background-color: #7744aa;
 }
 
 #drawer_button.collapse {
@@ -161,12 +192,7 @@ button {
 
 #drawer_button:hover,
 #drawer_button:focus-visible {
-    background-color: #ddaaff;
-}
-
-.night #drawer_button:hover,
-.night #drawer_button:focus-visible {
-    background-color: #663399;
+    background-color: var(--db-hover-bgcolor);
 }
 
 #drawer_button.collapse:hover {
@@ -175,25 +201,15 @@ button {
 
 #drawer_button:active {
     transform: translateY(2pt);
-    background-color: #bb88ee;
-}
-
-.night #drawer_button:active {
-    background-color: #552288;
+    background-color: var(--db-active-bgcolor);
 }
 
 #drawer_button svg.menu_icon {
-    --color: #ffffff;
-
     position: relative;
     float: right;
     height: 100%;
     overflow: hidden;
-    fill: var(--color);
-}
-
-.night #drawer_button svg.menu_icon {
-    --color: #ccbbdd;
+    fill: var(--db-text-color);
 }
 
 #drawer_button:hover svg.menu_icon {
@@ -271,26 +287,30 @@ button {
 @keyframes mid-expand {
     0% {}
 
+    49% {
+        scale: 1;
+    }
+
     50% {
-        rotate: 0deg;
+        scale: 0;
     }
 
     100% {
-        rotate: 135deg;
+        scale: 0;
     }
 }
 
 @keyframes mid-collapse {
     0% {
-        rotate: 135deg;
+        scale: 0;
     }
 
-    33% {
-        rotate: 90deg;
+    66% {
+        scale: 0;
     }
 
     67% {
-        rotate: 0deg;
+        scale: 1;
     }
 
     100% {}
@@ -391,54 +411,30 @@ button {
 }
 
 #setting_light {
-    --bg-path: url('icons/light_l.svg');
-}
-
-.night #setting_light {
-    --bg-path: url('icons/light_n.svg');
+    --bg-path: var(--icon-light);
 }
 
 #setting_lang {
-    --bg-path: url('icons/lang_l.svg');
-}
-
-.night #setting_lang {
-    --bg-path: url('icons/lang_n.svg');
+    --bg-path: var(--icon-lang);
 }
 
 #setting_size {
-    --bg-path: url('icons/size_l.svg');
-}
-
-.night #setting_size {
-    --bg-path: url('icons/size_n.svg');
+    --bg-path: var(--icon-size);
 }
 
 #warp_contents {
-    --bg-path: url('icons/content_l.svg');
+    --bg-path: var(--icon-content);
     --offset-x: 0pt;
 }
 
-.night #warp_contents {
-    --bg-path: url('icons/content_n.svg');
-}
-
 #warp_brief {
-    --bg-path: url('icons/brief_l.svg');
+    --bg-path: var(--icon-brief);
     --offset-x: -2pt;
 }
 
-.night #warp_brief {
-    --bg-path: url('icons/brief_n.svg');
-}
-
 #warp_main {
-    --bg-path: url('icons/article_l.svg');
+    --bg-path: var(--icon-art);
     --offset-x: -5pt;
-}
-
-.night #warp_main {
-    --bg-path: url('icons/article_n.svg');
 }
 
 .drawer_root .drawer_content .opt_text {
@@ -500,14 +496,10 @@ button {
     padding: 0pt 6pt;
     width: 24pt;
     height: 24pt;
-    background-image: url(icons/expand_l.svg);
+    background-image: var(--icon-expand);
     background-position: 50% 50%;
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-.night .drawer_root .drawer_container.flex .icon_expand {
-    background-image: url(icons/expand_n.svg);
 }
 
 .drawer_root.expand .drawer_container.flex .icon_expand {
@@ -515,11 +507,7 @@ button {
 }
 
 .icon_goto {
-    background-image: url(icons/goto_l.svg);
-}
-
-.night .icon_goto {
-    background-image: url(icons/goto_n.svg);
+    background-image: var(--icon-goto);
 }
 
 .drawer_content .icon_goto {
@@ -693,16 +681,12 @@ button.ready:active {
 div {
     border-radius: 5pt;
     box-shadow: 0pt 1pt 4pt #66666633;
-    background-color: #ffffff99;
+    background-color: var(--div-bgcolor);
     display: block;
     padding: 12pt;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     text-align: center;
-}
-
-.night div {
-    background-color: #ffffff22;
 }
 
 div.pad {
@@ -736,7 +720,7 @@ div.line_container {
 
     display: block;
     user-select: none;
-    background-color: #ffffffcc;
+    background-color: var(--art-bgcolor);
     margin: 12pt;
     padding: 24pt 12pt 12pt 12pt;
 
@@ -755,7 +739,7 @@ div.line_container {
 
 #root_div #root_page #filter_box {
     background-color: transparent;
-    border: #33006666 1pt solid;
+    border: var(--filter-button-bgcolor) 1pt solid;
     border-radius: 5pt;
     min-height: 2em;
     height: 2em;
@@ -779,24 +763,12 @@ div.line_container {
     width: 100%;
     box-sizing: border-box;
     background-color: transparent;
-    border: #33006666 1pt solid;
+    border: var(--filter-button-bgcolor) 1pt solid;
     margin: 3pt 0pt;
 }
 
 #root_div #root_page #root_arts button.selected {
-    background-color: #cc99ff99;
-}
-
-.night #root_div #root_page #root_arts button.selected {
-    background-color: #66339999;
-}
-
-.night #root_div #root_page #root_arts button {
-    border: #ffffff66 1pt solid;
-}
-
-.night #root_div #root_page #filter_box {
-    border: #ffffff66 1pt solid;
+    background-color: var(--button-selected-bgcolor);
 }
 
 @media screen and not (min-width: 640px) {
@@ -824,11 +796,6 @@ div.line_container {
     height: 80vh;
 }
 
-.night #root_div article {
-    border: #ffffff66 1pt solid;
-    background-color: #000000cc;
-}
-
 #root_div article.small {
     --font-size: 10pt;
 }
@@ -843,7 +810,12 @@ div.line_container {
 
 #root_div article * {
     font-size: var(--font-size);
+    transition: none;
     word-wrap: break-word;
+}
+
+#root_div article *:hover {
+    transition: inherit;
 }
 
 #root_div article p,
@@ -876,11 +848,7 @@ h3 {
     text-align: left;
     text-indent: 0;
     padding-bottom: 0.36em;
-    border-bottom: #666666 2pt double;
-}
-
-.night #root_div article h1 {
-    border-bottom: #cccccc 2pt double;
+    border-bottom: var(--art-h1-bdcolor) 2pt double;
 }
 
 #root_div #root_page #title_content {
@@ -911,11 +879,11 @@ h3 {
 }
 
 #header {
-    background-color: #cc99ff;
+    background-color: var(--fh-bgcolor);
     box-shadow: 0pt 2pt 5pt #66339966;
     border: none;
     border-radius: 0;
-    color: #ffffff;
+    color: var(--fh-color);
     display: block;
     position: fixed;
     float: inline-start;
@@ -928,11 +896,11 @@ h3 {
 }
 
 #footer {
-    background-color: #cc99ff;
+    background-color: var(--fh-bgcolor);
     box-shadow: 0pt -2pt 5pt #66339966;
     border: none;
     border-radius: 0;
-    color: #ffffff;
+    color: var(--fh-color);
     display: block;
     position: fixed;
     float: inline-end;
@@ -943,12 +911,6 @@ h3 {
     left: 0;
     padding: 0.3em 0em;
     z-index: 100;
-}
-
-.night #footer,
-.night #header {
-    background-color: #663399;
-    color: #cccccc;
 }
 
 div.left,
@@ -1038,8 +1000,8 @@ input#password {
 }
 
 select {
-    background-color: #ffffff;
-    border: 1pt solid #cccccc;
+    background-color: var(--select-bgcolor);
+    border: 1pt solid var(--select-bdcolor);
     border-radius: 5pt;
     font-size: 1em;
     padding: 4pt 4pt;
@@ -1047,17 +1009,8 @@ select {
     width: 100%;
 }
 
-.night select {
-    border: 1pt solid #330066;
-    background-color: #330066;
-}
-
 option:checked {
-    background-color: #ddbbff;
-}
-
-.night option:checked {
-    background-color: #663399;
+    background-color: var(--opt-checked-bgcolor);
 }
 
 select:hover,
