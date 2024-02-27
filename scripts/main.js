@@ -138,7 +138,7 @@ function getJsonData(path) {
 }
 
 function setupRubyElement(text) {
-    let result = '', reg = ['', ''];
+    let result = '', reg = [[], []], tmp = '';
     let status = 0;
 
     if (typeof text !== 'string')
@@ -160,62 +160,103 @@ function setupRubyElement(text) {
             case 1:
                 switch (text[i]) {
                     case '{':
-                        result += `{${reg[0]}`;
+                        reg[0].push(tmp);
+                        tmp = "";
+                        result += `{${reg[0].join('-')}`;
                         continue;
                     case '}':
                     case ']':
-                        result += `{${reg[0]}${text[i]}`;
+                        reg[0].push(tmp);
+                        tmp = "";
+                        result += `{${reg[0].join('-')}${text[i]}`;
                         status = 0;
-                        reg[0] = "";
+                        reg[0] = [];
                         continue;
                     case '[':
+                        reg[0].push(tmp);
+                        tmp = "";
                         status = 2;
                         continue;
+                    case '-':
+                        reg[0].push(tmp);
+                        tmp = "";
+                        continue;
+                    case '\\':
+                        i++;
+                        if (i >= text.length) {
+                            tmp += '\\';
+                            break;
+                        }
                     default:
-                        reg[0] += text[i];
+                        tmp += text[i];
                         continue;
                 }
             case 2:
                 switch (text[i]) {
                     case ']':
+                        reg[1].push(tmp);
+                        tmp = "";
                         status = 3;
                         continue;
                     case '{':
-                        result += `{${reg[0]}[${reg[1]}`;
+                        reg[1].push(tmp);
+                        tmp = "";
+                        result += `{${reg[0].join('-')}[${reg[1].join('-')}`;
                         status = 1;
-                        reg[0] = "";
-                        reg[1] = "";
+                        reg[0] = [];
+                        reg[1] = [];
                         continue;
                     case '}':
                     case '[':
-                        result += `{${reg[0]}[${reg[1]}${text[i]}`;
+                        reg[1].push(tmp);
+                        tmp = "";
+                        result += `{${reg[0].join('-')}[${reg[1].join('-')}${text[i]}`;
                         status = 0;
-                        reg[0] = "";
-                        reg[1] = "";
+                        reg[0] = [];
+                        reg[1] = [];
                         continue;
+                    case '-':
+                        reg[1].push(tmp);
+                        tmp = "";
+                        continue;
+                    case '\\':
+                        i++;
+                        if (i >= text.length) {
+                            tmp += '\\';
+                            break;
+                        }
                     default:
-                        reg[1] += text[i];
+                        tmp += text[i];
                         continue;
                 }
             case 3:
                 switch (text[i]) {
                     case '}':
-                        result += `<ruby>${reg[0]}<rt>${reg[1]}</rt></ruby>`;
+                        let l0 = reg[0].length, l1 = reg[1].length;
+                        if (l1 > l0)
+                            reg[1][l0 - 1] = reg[1].slice(l0 - 1).join("");
+                        for (let i = l1; i < l0; i++)
+                            reg[1].push("");
+
+                        result += "<ruby>";
+                        for (let i = 0; i < l0; i++)
+                            result += `${reg[0][i]}<rp>(</rp><rt>${reg[1][i]}</rt><rp>)</rp>`;
+                        result += "</ruby>";
                         status = 0;
-                        reg[0] = "";
-                        reg[1] = "";
+                        reg[0] = [];
+                        reg[1] = [];
                         continue;
                     case '{':
-                        result += `{${reg[0]}[${reg[1]}]`;
+                        result += `{${reg[0].join('-')}[${reg[1].join('-')}]`;
                         status = 1;
-                        reg[0] = "";
-                        reg[1] = "";
+                        reg[0] = [];
+                        reg[1] = [];
                         continue;
                     default:
-                        result += `{${reg[0]}[${reg[1]}]${text[i]}`;
+                        result += `{${reg[0].join('-')}[${reg[1].join('-')}]${text[i]}`;
                         status = 0;
-                        reg[0] = "";
-                        reg[1] = "";
+                        reg[0] = [];
+                        reg[1] = [];
                     case ' ':
                         continue;
                 }
@@ -228,13 +269,17 @@ function setupRubyElement(text) {
         case 0:
             break;
         case 1:
-            result += `{${reg[0]}`;
+            reg[0].push(tmp);
+            tmp = "";
+            result += `{${reg[0].join('-')}`;
             break;
         case 2:
-            result += `{${reg[0]}[${reg[1]}`;
+            reg[1].push(tmp);
+            tmp = "";
+            result += `{${reg[0].join('-')}[${reg[1].join('-')}`;
             break;
         case 3:
-            result += `{${reg[0]}[${reg[1]}]`;
+            result += `{${reg[0].join('-')}[${reg[1].join('-')}]`;
             break;
     }
 
