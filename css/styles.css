@@ -2,7 +2,6 @@
 
 body {
     background-color: var(--page-bgcolor);
-
 }
 
 * {
@@ -913,16 +912,21 @@ h3 {
     z-index: 100;
 }
 
+#footer *,
+#header * {
+    color: var(--fh-color);
+}
+
 div.left,
 form {
     text-align: left;
 }
 
-div.no_padding {
+.no_padding {
     padding: 0pt;
 }
 
-div.no_shadow {
+.no_shadow {
     box-shadow: none;
 }
 
@@ -938,7 +942,7 @@ div.divider {
 }
 
 h1 {
-    font-family: "Noto Serif CJK SC", "思源宋体", "宋体";
+    font-family: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun";
     font-size: 2.5em;
     font-weight: 900;
     margin-top: 0em;
