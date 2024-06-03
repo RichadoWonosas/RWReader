@@ -535,18 +535,7 @@ function initArticles() {
 }
 
 function markObjectSize(obj) {
-    let i;
-    for (i = 0; i < active_sheet.cssRules.length; i++) {
-        if (active_sheet.cssRules[i].selectorText === "#" + obj.id) {
-            active_sheet.deleteRule(i);
-            i--;
-        }
-    }
-    active_sheet.insertRule(
-        "#" + obj.id + " {" +
-        "--height: " + obj.offsetHeight + "px;" +
-        "}"
-    );
+    obj.style = "--height:" + obj.offsetHeight + "px";
 }
 
 function updateDrawerCond() {
