@@ -1,0 +1,51 @@
+{
+    "title": {
+        "en-US": "RW's Reader",
+        "zh-CN": "RW式阅读器",
+        "zh-TW": "RW式閱讀器",
+        "lzh-CN": "南理茶渡之幻卷",
+        "ja-JP": "RW式リーダー"
+    },
+    "title_content": {
+        "en-US": "Contents",
+        "zh-CN": "目录",
+        "zh-TW": "目錄",
+        "lzh-CN": "擇文處",
+        "ja-JP": "目次"
+    },
+    "filter_box": {
+        "en-US": "Enter keywords to filter...",
+        "zh-CN": "输入关键词以筛选……",
+        "zh-TW": "鍵入關鍵詞以篩選……",
+        "lzh-CN": "置要詞以篩……",
+        "ja-JP": "キーワードで絞り込む…"
+    },
+    "text_warp": {
+        "en-US": "Jump to",
+        "zh-CN": "跳转",
+        "zh-TW": "跳轉",
+        "lzh-CN": "傳",
+        "ja-JP": "ジャンプ"
+    },
+    "text_warp_contents": {
+        "en-US": "Contents",
+        "zh-CN": "目录",
+        "zh-TW": "目錄",
+        "lzh-CN": "錄",
+        "ja-JP": "目次"
+    },
+    "text_warp_brief": {
+        "en-US": "Brief",
+        "zh-CN": "简介",
+        "zh-TW": "簡介",
+        "lzh-CN": "序",
+        "ja-JP": "概要"
+    },
+    "text_warp_main": {
+        "en-US": "Article",
+        "zh-CN": "正文",
+        "zh-TW": "正文",
+        "lzh-CN": "文",
+        "ja-JP": "本編"
+    }
+}
