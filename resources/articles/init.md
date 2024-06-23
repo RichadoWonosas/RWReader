@@ -52,7 +52,7 @@
 
 最后祝你：{**身体健康**[ごきげんよう]}。再见。
 
-![01](css/Riomon.svg)
+![01](https://richadowonosas.github.io/img/base/Riomon.svg)
 
 RichadoWonosas
 
