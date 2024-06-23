@@ -339,6 +339,26 @@ const initArticles = () => {
     ).catch((err) => console.warn(err));
 };
 
+const initSettings = () => {
+    helper.addEventListener("size", "root", (res) => {
+        if (res.size === 'small') {
+            root_div.classList.add('small');
+        } else {
+            root_div.classList.remove('small');
+        }
+        if (res.size === 'medium') {
+            root_div.classList.add('medium');
+        } else {
+            root_div.classList.remove('medium');
+        }
+        if (res.size === 'large') {
+            root_div.classList.add('large');
+        } else {
+            root_div.classList.remove('large');
+        }
+    });
+};
+
 const initLocale = () => {
     helper.importTranslation(document.URL.split("/").slice(0, -1).join("/") + "/resources/localized-strings.json");
     helper.addEventListener("locale", "title", (res) => document.title = res.str);
@@ -346,7 +366,7 @@ const initLocale = () => {
     helper.addEventListener("locale", "filter_box", (res) => input_filter.placeholder = res.str);
 };
 
-const buildUpDrawer = () => {
+const buildDrawer = () => {
     let warp = helper.drawer.createDrawerContentFrame("warp", "跳转");
     {
         let cont = warp.createContent("contents", "目录");
@@ -395,9 +415,9 @@ const buildUpDrawer = () => {
 
 const initialise = () => {
     marked.setOptions({ mangle: false, headerIds: false });
-
+    initSettings();
     initLocale();
-    buildUpDrawer();
+    buildDrawer();
 
     helper.loadGlobalConfig();
     helper.drawer.appendToDocument();
