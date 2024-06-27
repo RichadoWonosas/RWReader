@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     <title id="title">RW式阅读器</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
-    <link rel="stylesheet" href="https://richadowonosas.github.io/css/base.css" />
-    <link rel="stylesheet" href="https://richadowonosas.github.io/css/drawer.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/drawer.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="https://richadowonosas.github.io/img/base/Riomon.svg" />
+    <link rel="icon" href="../img/base/Riomon.svg" />
 </head>
 
 <body>
-    <!-- Fixed part -->
-    <!-- <p id="header">
-        <span id="head_text">欢迎使用...</span>
-    </p> -->
     <p id="footer">
         <span id="foot_text">RichadoWonosas 2023</span>
         <noscript id="text_noscript">注意：请启用JavaScript或者更换能够使用JavaScript的浏览器。</noscript>
@@ -23,15 +18,12 @@
     <div id="div_bg" class="no_padding no_shadow"></div>
 
     <!-- Main page -->
-    <!-- <div id="header_pad" class="pad no_padding no_shadow"></div> -->
-
     <div id="root_div">
         <div class="line_container">
             <article id="root_page">
                 <h1 id="title_content">文章选择</h1>
-                <input id="filter_box" type="search" placeholder="输入关键词以筛选……"></input>
-                <div id="root_arts" class="no_shadow">
-                </div>
+                <label for="filter_box"></label><input id="filter_box" type="search" placeholder="输入关键词以筛选……" />
+                <div id="root_arts" class="no_shadow"></div>
             </article>
             <article id="art_brief"></article>
         </div>
@@ -41,7 +33,4 @@
     <div id="footer_pad" class="pad no_padding no_shadow"></div>
 
     <script src="scripts/main.js" type="module" defer></script>
-    <script src="scripts/tps/marked.min.js" defer></script>
 </body>
-
-</html>

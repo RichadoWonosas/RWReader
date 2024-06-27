@@ -14,17 +14,14 @@
 
 #warp_contents {
     --bg-path: var(--icon-content);
-    --offset-x: 0pt;
 }
 
 #warp_brief {
     --bg-path: var(--icon-brief);
-    --offset-x: -2pt;
 }
 
 #warp_main {
     --bg-path: var(--icon-article);
-    --offset-x: -5pt;
 }
 
 button {

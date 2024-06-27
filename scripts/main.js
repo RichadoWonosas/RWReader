@@ -1,9 +1,25 @@
 "use strict";
 
-import {helper} from "https://richadowonosas.github.io/scripts/helper.js";
-import {getJsonData} from "https://richadowonosas.github.io/scripts/json.js";
+import {helper, getJsonData} from "/scripts/helper.js";
+import {marked} from "./tps/marked.esm.js";
+
+// Variables
 
 let arts_showing = [];
+
+// Constants
+
+const root_div = document.getElementById("root_div");
+const art_brief = document.getElementById("art_brief");
+const art_main = document.getElementById("art_main");
+const root_arts = document.getElementById("root_arts");
+const input_filter = document.getElementById("filter_box");
+const title_content = document.getElementById("title_content");
+
+const vacantDiv = document.createElement("div");
+
+const button_arts = [];
+const content_arts = {};
 
 // Functions
 
@@ -360,10 +376,15 @@ const initSettings = () => {
 };
 
 const initLocale = () => {
-    helper.importTranslation(document.URL.split("/").slice(0, -1).join("/") + "/resources/localized-strings.json");
+    helper.importTranslation(window.location.pathname.split("/").slice(0, -1).join("/") + "/resources/localized-strings.json");
     helper.addEventListener("locale", "title", (res) => document.title = res.str);
     helper.addEventListener("locale", "title_content", (res) => title_content.innerText = res.str);
     helper.addEventListener("locale", "filter_box", (res) => input_filter.placeholder = res.str);
+};
+
+const initElements = () => {
+    input_filter.oninput = () => helper.triggerEvent("filter", {filter: input_filter.value});
+    window.onresize = () => helper.drawer.updateDrawerCond();
 };
 
 const buildDrawer = () => {
@@ -415,6 +436,7 @@ const buildDrawer = () => {
 
 const initialise = () => {
     marked.setOptions({ mangle: false, headerIds: false });
+    initElements();
     initSettings();
     initLocale();
     buildDrawer();
@@ -426,18 +448,4 @@ const initialise = () => {
 };
 
 // Initialisation
-const art_brief = document.getElementById("art_brief");
-const art_main = document.getElementById("art_main");
-const root_arts = document.getElementById("root_arts");
-const input_filter = document.getElementById("filter_box");
-const title_content = document.getElementById("title_content");
-
-const vacantDiv = document.createElement("div");
-
-input_filter.oninput = () => helper.triggerEvent("filter", {filter: input_filter.value});
-window.onresize = () => helper.drawer.updateDrawerCond();
-
-const button_arts = [];
-const content_arts = {};
-
-document.body.onload = initialise;
+initialise();
